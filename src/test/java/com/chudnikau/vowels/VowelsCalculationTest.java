@@ -40,14 +40,13 @@ public class VowelsCalculationTest {
     }
 
     @Test
-    public void noWhiteSpacesTest() throws IOException {
+    public void noExtraWhiteSpacesTest() throws IOException {
         String expected = "({a, o}, 6) -> 2.5" + lineSeparator +
                 "({a, o}, 5) -> 2" + lineSeparator +
                 "({a, e}, 4) -> 2";
         Assert.assertArrayEquals(expected.getBytes(),
                 calcTest("platon made bamboo boats."));
     }
-
 
     @Test
     public void whiteSpacesTest() throws IOException {
@@ -57,7 +56,6 @@ public class VowelsCalculationTest {
         Assert.assertArrayEquals(expected.getBytes(),
                 calcTest("   platon,\t\nmade\rbamboo  boats\t."));
     }
-
 
     @Test
     public void lowerCaseTest() throws IOException {
@@ -74,7 +72,7 @@ public class VowelsCalculationTest {
                 "({a, o}, 5) -> 2" + lineSeparator +
                 "({a, e}, 4) -> 2";
         Assert.assertArrayEquals(expected.getBytes(),
-                calcTest("   platon,\t\nmade\rbamboo  boats\t.".toUpperCase()));
+                calcTest("   PLATON,\t\nMADE\rBAMBOO  BOATS\t."));
     }
 
     @Test
@@ -98,7 +96,7 @@ public class VowelsCalculationTest {
         String expected = "({a, i, o}, 6) -> 6" + lineSeparator +
                 "({o}, 4) -> 4";
         Assert.assertArrayEquals(expected.getBytes(),
-                calcTest("aaooii \t\t\t  oooo"));
+                calcTest("aaooii \t\t\t oooo"));
     }
 
     @Test
@@ -109,10 +107,18 @@ public class VowelsCalculationTest {
     }
 
     @Test
-    public void commaTest() throws IOException {
+    public void punctuationInsideWordTest() throws IOException {
         String expected = "({a, o}, 6) -> 6";
         Assert.assertArrayEquals(expected.getBytes(),
                 calcTest("aaa,ooo"));
+    }
+
+    @Test
+    public void abandonedPunctuationTest() throws IOException {
+        String expected = "({a, o}, 6) -> 2" + lineSeparator +
+                "({a, e}, 4) -> 2";
+        Assert.assertArrayEquals(expected.getBytes(),
+                calcTest("Platon , made"));
     }
 
     @Test

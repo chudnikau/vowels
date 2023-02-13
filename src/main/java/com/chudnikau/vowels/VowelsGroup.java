@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  *  - set of vowels
  *  - word length
  *
- * The group is sorted by word length in map
+ * The group is descending sorted by word length in map
  * Sorted groups by word length
  * ({a, o}, 6) -> 2.5  << on top position because word length is 6
  * ({a, o}, 5) -> 2
@@ -31,10 +31,6 @@ public class VowelsGroup implements Comparable<VowelsGroup> {
     private final Set<Character> vowels = new TreeSet<>();
 
     private final Integer wordLength;
-
-    public Integer getWordLength() {
-        return wordLength;
-    }
 
     public VowelsGroup(List<Character> vowels, Integer length) {
         this.vowels.addAll(vowels);
@@ -73,7 +69,7 @@ public class VowelsGroup implements Comparable<VowelsGroup> {
     }
 
     @Override
-    public int compareTo(VowelsGroup o) {
-        return o.wordLength.compareTo(wordLength);
+    public int compareTo(VowelsGroup vowelsGroup) {
+        return vowelsGroup.wordLength.compareTo(wordLength);
     }
 }

@@ -17,7 +17,7 @@ public class VowelsCalculation {
     private final Map<VowelsGroup, List<Integer>> vowelMap = new TreeMap<>();
 
     private boolean isSeparator(int c) {
-        return Character.isWhitespace(c) || Character.isSpaceChar(c);
+        return Character.isWhitespace(c);
     }
 
     public VowelsCalculation readVowels(InputStream input) throws IOException {

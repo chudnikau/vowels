@@ -35,12 +35,12 @@ Good to have:
 
 ## Additional assumptions
 
-- The punctuation char in the word does not separate the word on two parts.
+- The punctuation char in a word does not separate it on two parts.
 
-**EXAMPLE:** 
+**EXAMPLE** 
 
 The average number of vowels of `"aaa,ooo"` is calculated as:
 
 ```({a, o}, 6) -> 6``` 
 
-The comma is not part of length of the word.
+The punctuation characters is not part of length of the word.
